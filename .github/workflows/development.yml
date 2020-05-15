@@ -3,6 +3,7 @@ on: [push]
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu]
         ruby: [2.5, 2.6, 2.7]
@@ -22,4 +23,4 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
 
     - run: bundle install
-    - run: bundle exec rake
+    - run: bundle exec rspec
