@@ -6,18 +6,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu]
-        ruby: [2.5, 2.6, 2.7]
-        experimental: [false]
-        include:
-        - os: ubuntu
-          ruby: ruby-head
-          experimental: true
-        - os: ubuntu
-          ruby: ruby-debug
-          experimental: true
+        ruby: [2.5, 2.6, 2.7, head, debug]
 
     runs-on: ${{ matrix.os }}-latest
-    continue-on-error: ${{ matrix.experimental }}
+    continue-on-error: ${{ matrix.ruby == 'head' || matrix.ruby == 'debug' }}
     steps:
     - uses: actions/checkout@v2
     - uses: ruby/setup-ruby@v1
