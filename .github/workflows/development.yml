@@ -9,9 +9,11 @@ jobs:
         ruby: [2.5, 2.6, 2.7]
         experimental: [false]
         include:
-        - ruby: ruby-head
+        - os: ubuntu
+          ruby: ruby-head
           experimental: true
-        - ruby: ruby-debug
+        - os: ubuntu
+          ruby: ruby-debug
           experimental: true
 
     runs-on: ${{ matrix.os }}-latest
